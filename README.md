@@ -12,13 +12,13 @@ This project demonstrates the evolution of a **Shopping Cart** and its integrati
 This represents the simplest implementation where all logic is consolidated in one place, which might seem convenient initially. However, as the number of payment methods increases, the design becomes harder to maintain and scale.
 
 #### Problems Highlighted:
-- **Violation of Single Responsibility Principle (SRP)**: The `checkout`(src/naive/Problems.kt#L19) method handles multiple responsibilities (e.g., payment logic, condition checks).
+- **Violation of Single Responsibility Principle (SRP)**: The [`checkout`](src/naive/Problems.kt#L19) method handles multiple responsibilities (e.g., payment logic, condition checks).
 - **Violation of Open/Closed Principle (OCP)**: Adding a new payment type requires modifying existing code.
 - **Tight Coupling**: Payment logic is tightly coupled to the Shopping Cart, making testing or reusing code elsewhere difficult.
-- **Scaling Issues**: Each additional payment method further increases the complexity of the `checkout`(src/naive/Problems.kt#L19) method.
+- **Scaling Issues**: Each additional payment method further increases the complexity of the [`checkout`](src/naive/Problems.kt#L19) method.
 
 #### Example:
-The `ShoppingCartSinglePaymentMethod`(src/naive/ShoppingCartSinglePaymentMethod.kt) and `ShoppingCartTwoPaymentMethod`(src/naive/ShoppingCartTwoPaymentMethod.kt) demonstrate these problems.
+The [`ShoppingCartSinglePaymentMethod`](src/naive/ShoppingCartSinglePaymentMethod.kt) and [`ShoppingCartTwoPaymentMethod`](src/naive/ShoppingCartTwoPaymentMethod.kt) demonstrate these problems.
 
 ---
 
@@ -36,7 +36,7 @@ To address some of the problems in the naive solution, inheritance is introduced
 - **Testing Challenges**: You can’t effectively test isolated logic in child classes without dependency on parent logic.
 
 #### Example:
-The `ShoppingCartWithInheritance`(src/inheritance/ShoppingCartWithInheritance.kt) and `ShoppingCartWithInheritanceAndSharedLogic`(src/inheritance/`ShoppingCartWithInheritanceAndSharedLogic.kt) showcase inheritance but highlight the accompanying issues.
+The [`ShoppingCartWithInheritance`](src/inheritance/ShoppingCartWithInheritance.kt) and [`ShoppingCartWithInheritanceAndSharedLogic`](src/inheritance/`ShoppingCartWithInheritanceAndSharedLogic.kt) showcase inheritance but highlight the accompanying issues.
 
 ---
 
@@ -53,7 +53,7 @@ Interfaces are introduced to decouple behaviors like **tracking**, **receipt gen
 - Maintenance complexities may increase as the number of interfaces grows.
 
 #### Example:
-The `ShoppingCartWithInterfaces`(src/interfaces/ShoppingCartWithInterfaces.kt) demonstrates this approach but also hints at its limitations.
+The [`ShoppingCartWithInterfaces`](src/interfaces/ShoppingCartWithInterfaces.kt) demonstrates this approach but also hints at its limitations.
 
 ---
 
@@ -67,7 +67,7 @@ The **Strategy Pattern** is implemented as the final and most robust solution. I
 - **Clarity and Isolation**: Each class has one focus (e.g., payment logic, tracking, or receipt display), improving clarity and making testing easier.
 
 #### Example:
-The `ShoppingCartWithStrategyPattern`(src/pattern/ShoppingCartWithStrategyPattern.kt) implements this pattern and highlights its benefits.
+The [`ShoppingCartWithStrategyPattern`](src/pattern/ShoppingCartWithStrategyPattern.kt) implements this pattern and highlights its benefits.
 
 ---
 
@@ -75,21 +75,21 @@ The `ShoppingCartWithStrategyPattern`(src/pattern/ShoppingCartWithStrategyPatter
 
 ### Packages:
 1. **naive**
-   - Contains naive implementations, e.g., `ShoppingCartSinglePaymentMethod`(src/naive/ShoppingCartSinglePaymentMethod.kt) and `ShoppingCartTwoPaymentMethod`(src/naive/ShoppingCartTwoPaymentMethod.kt).
+   - Contains naive implementations, e.g., [`ShoppingCartSinglePaymentMethod`](src/naive/ShoppingCartSinglePaymentMethod.kt) and [`ShoppingCartTwoPaymentMethod`](src/naive/ShoppingCartTwoPaymentMethod.kt).
    - Highlights problems with monolithic design and tightly coupled logic.
 
 2. **inheritance**
    - Focuses on inheritance-based solutions.
-   - Classes like `BasePayment`(src/inheritance/ShoppingCartWithInheritance.kt#L3), `PayPalPayment`(src/inheritance/ShoppingCartWithInheritance.kt#L9), and `ShoppingCartWithInheritance`(src/inheritance/ShoppingCartWithInheritance.kt) demonstrate issues related to misuse of inheritance.
+   - Classes like [`BasePayment`](src/inheritance/ShoppingCartWithInheritance.kt#L3), [`PayPalPayment`](src/inheritance/ShoppingCartWithInheritance.kt#L9), and [`ShoppingCartWithInheritance`](src/inheritance/ShoppingCartWithInheritance.kt) demonstrate issues related to misuse of inheritance.
 
 3. **interfaces**
-   - Uses interfaces to better separate concerns, as showcased in `Trackable`(src/interfaces/ShoppingCartWithInterfaces.kt#L9), `Receiptable`(src/interfaces/ShoppingCartWithInterfaces.kt#L15), and their implementations.
+   - Uses interfaces to better separate concerns, as showcased in [`Trackable`](src/interfaces/ShoppingCartWithInterfaces.kt#L9), [`Receiptable`](src/interfaces/ShoppingCartWithInterfaces.kt#L15), and their implementations.
    - Highlights improvements and remaining challenges.
 
 4. **pattern**
    - Illustrates the Strategy Pattern.
    - Includes strategies for **Payment**, **Tracking**, and **Receipt** behaviors.
-   - Demonstrates runtime flexibility and the benefits of modularity, as shown in `CreditCardPaymentStrategy`(src/pattern/ShoppingCartWithStrategyPattern.kt#L15), `DefaultTracking`(src/pattern/ShoppingCartWithStrategyPattern.kt#L27), and `SuccessReceipt`(src/pattern/ShoppingCartWithStrategyPattern.kt#L39).
+   - Demonstrates runtime flexibility and the benefits of modularity, as shown in [`CreditCardPaymentStrategy`](src/pattern/ShoppingCartWithStrategyPattern.kt#L15), [`DefaultTracking`](src/pattern/ShoppingCartWithStrategyPattern.kt#L27), and [`SuccessReceipt`](src/pattern/ShoppingCartWithStrategyPattern.kt#L39).
 
 ---
 
